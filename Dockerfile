@@ -27,9 +27,7 @@ RUN mkdir -p /opt/JDownloader/ && \
     cp -r /opt/JDownloader/* /opt/JDownloader-orig/ && \
     rm -f /usr/bin/qemu-*-static
 
-COPY daemon.sh /opt/JDownloader/
 COPY daemon.sh /opt/JDownloader-orig/
-COPY default-config.json.dist /opt/JDownloader/org.jdownloader.api.myjdownloader.MyJDownloaderSettings.json.dist
 COPY default-config.json.dist /opt/JDownloader-orig/org.jdownloader.api.myjdownloader.MyJDownloaderSettings.json.dist
 COPY configure.sh /usr/bin/configure
 
@@ -37,4 +35,4 @@ EXPOSE 3129
 WORKDIR /opt/JDownloader
 
 
-CMD ["/opt/JDownloader/daemon.sh"]
+CMD ["/opt/JDownloader-orig/daemon.sh"]
