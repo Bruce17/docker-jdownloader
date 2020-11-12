@@ -1,23 +1,23 @@
-image: Bruce17/jdownloader:$FULLVERSION
+image: bruce17/jdownloader:$FULLVERSION
 manifests:
-  - image: Bruce17/jdownloader:$VERSION-arm32v6
+  - image: bruce17/jdownloader:$VERSION-arm32v6
     platform:
       architecture: arm
       variant: v6
       os: linux
   -
-    image: Bruce17/jdownloader:$VERSION-armhf
+    image: bruce17/jdownloader:$VERSION-armhf
     platform:
       architecture: arm
       variant: v7
       os: linux
   -
-    image: Bruce17/jdownloader:$VERSION-arm64v8
+    image: bruce17/jdownloader:$VERSION-arm64v8
     platform:
       architecture: arm64
       os: linux
   -
-    image: Bruce17/jdownloader:$VERSION-amd64
+    image: bruce17/jdownloader:$VERSION-amd64
     platform:
       architecture: amd64
       os: linux
