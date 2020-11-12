@@ -28,7 +28,7 @@ build: qemu-arm-static qemu-aarch64-static
 		fi; \
 		cat $$FILE | sed "s/FROM openjdk:jre-alpine/FROM $$image/g" > .Dockerfile; \
 		docker build -t Bruce17/jdownloader:${VERSION}-$(arch) -f .Dockerfile --build-arg ARCH=$${archi} ${CACHE} --build-arg VERSION=${VERSION} .;\
-		docker tag Bruce17/jdownloader:${VERSION}-$(arch) docker.pkg.github.com/bruce17/docker-jdownloader/jdownloader:${VERSION}-$(arch)
+		docker tag Bruce17/jdownloader:${VERSION}-$(arch) docker.pkg.github.com/bruce17/docker-jdownloader/jdownloader:${VERSION}-$(arch); \
 	)
 publish:
 	# docker push Bruce17/jdownloader
