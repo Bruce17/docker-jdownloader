@@ -2,7 +2,7 @@ VERSION ?= 1.4.2
 CACHE ?= --no-cache=1
 FULLVERSION ?= ${VERSION}
 # archs ?= amd64 arm32v6 armhf arm64v8
-archs ?= armhf arm64v8
+archs ?= armhf
 
 .PHONY: all build publish latest
 all: build publish latest
