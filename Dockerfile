@@ -28,7 +28,7 @@ COPY default-config.json.dist /opt/JDownloader/org.jdownloader.api.myjdownloader
 COPY configure.sh /usr/bin/configure
 
 # Finally create a copy of all files. Useful if you want to use Kubernetes and have to mount the volume into "/opt/JDownloader/" so that JDownloader does not hang in a infinity initialization loop.
-RUN cp -r /opt/JDownloader/ /opt/JDownloader-orig/
+RUN cp -r /opt/JDownloader/* /opt/JDownloader-orig/ || true
 
 EXPOSE 3129
 WORKDIR /opt/JDownloader
