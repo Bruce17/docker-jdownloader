@@ -3,7 +3,9 @@
 trap 'kill -TERM $PID' TERM INT
 
 # Copy all original files over first, if they do not exist yet. Useful if you want to use Kubernetes and have to mount the volume into "/opt/JDownloader/" so that JDownloader does not hang in a infinity initialization loop.
-cp -n -R /opt/JDownloader-orig/* /opt/JDownloader/
+if [ -d /opt/JDownloader-orig/ ]; then
+    cp -n -R /opt/JDownloader-orig/* /opt/JDownloader/
+fi
 
 rm -f /opt/JDownloader/JDownloader.jar.*
 rm -f /opt/JDownloader/JDownloader.pid
