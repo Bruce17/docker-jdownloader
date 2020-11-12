@@ -32,9 +32,9 @@ build: qemu-arm-static qemu-aarch64-static
 	)
 publish:
 	docker push hansdampf17/jdownloader
-	cat manifest.yml | sed "s/\$$VERSION/${VERSION}/g" > manifest.yaml
-	cat manifest.yaml | sed "s/\$$FULLVERSION/${FULLVERSION}/g" > manifest2.yaml
-	mv manifest2.yaml manifest.yaml
-	manifest-tool push from-spec manifest.yaml
+	# cat manifest.yml | sed "s/\$$VERSION/${VERSION}/g" > manifest.yaml
+	# cat manifest.yaml | sed "s/\$$FULLVERSION/${FULLVERSION}/g" > manifest2.yaml
+	# mv manifest2.yaml manifest.yaml
+	# manifest-tool push from-spec manifest.yaml
 latest: build
 	FULLVERSION=latest VERSION=${VERSION} make publish
