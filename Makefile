@@ -27,10 +27,13 @@ build: qemu-arm-static qemu-aarch64-static
 			image=bellsoft\\/liberica-openjdk-alpine:10-aarch64; \
 		fi; \
 		cat $$FILE | sed "s/FROM openjdk:jre-alpine/FROM $$image/g" > .Dockerfile; \
-		docker build -t jaymoulin/jdownloader:${VERSION}-$(arch) -f .Dockerfile --build-arg ARCH=$${archi} ${CACHE} --build-arg VERSION=${VERSION} .;\
+		docker build -t Bruce17/jdownloader:${VERSION}-$(arch) -f .Dockerfile --build-arg ARCH=$${archi} ${CACHE} --build-arg VERSION=${VERSION} .;\
+		docker tag Bruce17/jdownloader:${VERSION}-$(arch) docker.pkg.github.com/bruce17/docker-jdownloader/jdownloader:${VERSION}-$(arch)
 	)
 publish:
-	docker push jaymoulin/jdownloader
+	# docker push Bruce17/jdownloader
+	docker push docker.pkg.github.com/bruce17/bruce17/docker-jdownloader
+
 	cat manifest.yml | sed "s/\$$VERSION/${VERSION}/g" > manifest.yaml
 	cat manifest.yaml | sed "s/\$$FULLVERSION/${FULLVERSION}/g" > manifest2.yaml
 	mv manifest2.yaml manifest.yaml
