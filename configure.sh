@@ -7,6 +7,10 @@ if [ ! $# -eq 2 ]; then
     exit 1
 fi
 
+if [ ! -d /opt/JDownloader/cfg/ ]; then
+    mkdir -p /opt/JDownloader/cfg/
+fi
+
 if [ ! -f /opt/JDownloader/cfg/org.jdownloader.api.myjdownloader.MyJDownloaderSettings.json ]; then
     cp /opt/JDownloader/org.jdownloader.api.myjdownloader.MyJDownloaderSettings.json.dist /opt/JDownloader/cfg/org.jdownloader.api.myjdownloader.MyJDownloaderSettings.json
 fi
