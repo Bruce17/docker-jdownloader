@@ -38,9 +38,10 @@ publish:
 		docker push docker.pkg.github.com/bruce17/docker-jdownloader/jdownloader:${VERSION}-$(arch); \
 	)
 
-	cat manifest.yml | sed "s/\$$VERSION/${VERSION}/g" > manifest.yaml
-	cat manifest.yaml | sed "s/\$$FULLVERSION/${FULLVERSION}/g" > manifest2.yaml
-	mv manifest2.yaml manifest.yaml
-	manifest-tool push from-spec manifest.yaml
+	# Notice: Disabled on GitHub
+	# cat manifest.yml | sed "s/\$$VERSION/${VERSION}/g" > manifest.yaml
+	# cat manifest.yaml | sed "s/\$$FULLVERSION/${FULLVERSION}/g" > manifest2.yaml
+	# mv manifest2.yaml manifest.yaml
+	# manifest-tool push from-spec manifest.yaml
 latest: build
 	FULLVERSION=latest VERSION=${VERSION} make publish
