@@ -6,7 +6,13 @@ rm -f /opt/JDownloader/JDownloader.pid
 
 # Login user with env credentials - Please prefer command way
 if [ -n "$MYJD_USER" ] && [ -n "$MYJD_PASSWORD" ]; then
-    configure "$MYJD_USER" "$MYJD_PASSWORD"
+    # Check if shell is ASH (shell used inside BusyBox) or if container is running on top of BusyBox.
+    # Seems where is an issue with the shell implementation passing ENV using double quotes. The sed inside the configure script has issues with the double quotes on ASH.
+    if (ls -l /bin | grep ash || ls -l | grep sh | grep -i busybox) ; then
+        configure $MYJD_USER $MYJD_PASSWORD
+    else
+        configure "$MYJD_USER" "$MYJD_PASSWORD"
+    fi
 fi
 
 # Defining device name to jdownloader interface - please prefer this method than changing on MyJDownloader to keep correct binding
