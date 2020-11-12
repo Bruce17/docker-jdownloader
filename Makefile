@@ -32,7 +32,7 @@ build: qemu-arm-static qemu-aarch64-static
 	)
 publish:
 	# docker push bruce17/jdownloader
-	docker push docker.pkg.github.com/bruce17/bruce17/docker-jdownloader
+	docker push docker.pkg.github.com/bruce17/docker-jdownloader
 
 	cat manifest.yml | sed "s/\$$VERSION/${VERSION}/g" > manifest.yaml
 	cat manifest.yaml | sed "s/\$$FULLVERSION/${FULLVERSION}/g" > manifest2.yaml
